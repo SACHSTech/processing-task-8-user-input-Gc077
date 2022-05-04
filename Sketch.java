@@ -55,6 +55,12 @@ public class Sketch extends PApplet {
     else if(isHousePressed == true){
       house(mouseX, mouseY, 100);
     }
+
+    if (isHousePressed == true && mousePressed == true)
+    {
+      isHousePressed = false;
+    }
+
     
   }
   
