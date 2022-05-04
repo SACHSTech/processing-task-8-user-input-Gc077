@@ -5,7 +5,8 @@ public class Sketch extends PApplet {
 	// Delcare global variables
   int intHouseXdefault = 50;
   int intHouseYdefault = 250;
-  boolean is
+  boolean isSunPressed;
+  boolean isHousePressed;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -39,12 +40,22 @@ public class Sketch extends PApplet {
     house(200, 100, 200);
 
     // Draw house 2 
-    if(mousePressed && mouseX > 50 && mouseX < 150 && mouseY > 250 && mouseY < 350){
-      house(mouseX, mouseY, 100);
+    if(mouseX > 50 && mouseX < 150 && mouseY > 250 && mouseY < 350 && isHousePressed == false){
+      if(mousePressed){
+        isHousePressed = true;
+        mousePressed = false;
+      }
+      else{}
     }
-    else{
+    else{}
+
+    if(isHousePressed == false){
       house(50, 250, 100);
     }
+    else if(isHousePressed == true){
+      house(mouseX, mouseY, 100);
+    }
+    
   }
   
   // define other methods down here.
