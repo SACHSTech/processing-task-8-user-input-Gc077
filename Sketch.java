@@ -5,8 +5,10 @@ public class Sketch extends PApplet {
 	// Delcare global variables
   int intHouseXdefault = 50;
   int intHouseYdefault = 250;
-  boolean isSunPressed;
-  boolean isHousePressed;
+  int intSunXdefault = 50;
+  int intSunYdefault = 60;
+  boolean isSunPressed = false;
+  boolean isHousePressed = false;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -33,13 +35,35 @@ public class Sketch extends PApplet {
     // Draw Grass
     grass(0, 300, 400, 100);
 
-    // Draw sun
+    // Draw sun and animate through mouse inputs
     sun(50, 60, 80);
+    // Arrow key movements 
+    if(keyPressed){
+      if(keyCode == DOWN){
+        intSunYdefault++;
+      }
+      else if(keyCode == UP){
+        intSunYdefault--;
+      }
+      else if(keyCode == RIGHT){
+        intSunXdefault++;
+      }
+      else if(keyCode == LEFT){
+        intSunXdefault--;
+      }
+    }
+    if(mouseX >= intSunXdefault && mouseX <= intSunXdefault + 80 && mouseY <= intSunYdefault + 80 && mouseY >= intSunYdefault && isSunPressed == false){
+
+    }
+    if (isSunPressed == true && mousePressed == true)
+    {
+      isSunPressed = false;
+    }
 
     // Draw house 1
     house(200, 100, 200);
 
-    // Draw house 2 
+    // Draw house 2 and animate through mouse inputs
     if(mouseX > 50 && mouseX < 150 && mouseY > 250 && mouseY < 350 && isHousePressed == false){
       if(mousePressed){
         isHousePressed = true;
@@ -50,7 +74,7 @@ public class Sketch extends PApplet {
     else{}
 
     if(isHousePressed == false){
-      house(50, 250, 100);
+      house(intHouseXdefault, intHouseYdefault, 100);
     }
     else if(isHousePressed == true){
       house(mouseX, mouseY, 100);
@@ -60,7 +84,6 @@ public class Sketch extends PApplet {
     {
       isHousePressed = false;
     }
-
     
   }
   
