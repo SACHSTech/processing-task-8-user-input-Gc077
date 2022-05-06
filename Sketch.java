@@ -36,8 +36,16 @@ public class Sketch extends PApplet {
     grass(0, 300, 400, 100);
 
     // Draw sun and animate through mouse inputs
-    sun(50, 60, 80);
     // Arrow key movements 
+    if(mouseX >= intSunXdefault && mouseX <= (intSunXdefault + 80) && mouseY >= intSunYdefault && mouseY <= (intSunYdefault + 80) && isSunPressed == false){
+      if(mousePressed == true){
+        isSunPressed = true;
+        mousePressed = false;
+      }
+      else{}
+    }
+    else{}
+
     if(keyPressed){
       if(keyCode == DOWN){
         intSunYdefault++;
@@ -52,12 +60,16 @@ public class Sketch extends PApplet {
         intSunXdefault--;
       }
     }
-    if(mouseX >= intSunXdefault && mouseX <= intSunXdefault + 80 && mouseY <= intSunYdefault + 80 && mouseY >= intSunYdefault && isSunPressed == false){
-
-    }
     if (isSunPressed == true && mousePressed == true)
     {
       isSunPressed = false;
+    }
+
+    if (isSunPressed == false){
+      sun(intSunXdefault, intSunYdefault, 80);
+    }
+    else if (isSunPressed == true){
+      sun(mouseX, mouseY, 80);
     }
 
     // Draw house 1
@@ -84,10 +96,8 @@ public class Sketch extends PApplet {
     {
       isHousePressed = false;
     }
-    
   }
-  
-  // define other methods down here.
+
   /**
   * Draws a base grass for a drawing that utilizes grass for the base
   * 
