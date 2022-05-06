@@ -9,6 +9,7 @@ public class Sketch extends PApplet {
   int intSunYdefault = 60;
   boolean isSunPressed = false;
   boolean isHousePressed = false;
+  char myLetter;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -127,6 +128,11 @@ public class Sketch extends PApplet {
     {
       isHousePressed = false;
     }
+
+    // Text display on screen
+    fill(255);
+    textSize(50);
+    text(key, 300, 150);
 }
 
 
@@ -194,5 +200,9 @@ public class Sketch extends PApplet {
     // Door 
     fill(0);
     rect(intHouseX, (intHouseY + (intHouseSize / 2)), (intHouseSize / 3), (intHouseSize / 2));
+  }
+  public void mouseWheel(){
+    background(255);
+    
   }
 }
