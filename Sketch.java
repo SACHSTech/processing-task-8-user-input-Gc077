@@ -22,7 +22,7 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
-    background(210, 255, 173);
+    background(135, 206, 235);
   }
 
   /**
@@ -31,10 +31,19 @@ public class Sketch extends PApplet {
   public void draw() {
 	   // Environment Designs 
     // Background 
-    background(210, 255, 173);
-    // Draw Grass
-    grass(0, 300, 400, 100);
-
+    if (isSunPressed == false) {
+      background(135, 206, 235);
+    }
+    else if (mouseY <= 150 && isSunPressed == true) {
+      background(135, 206, 235);
+    }
+    else if (mouseY > 150 && mouseY < 300 && isSunPressed == true) {
+      background(238, 93, 108);
+    }
+    else if (mouseY > 300 && isSunPressed == true) {
+      background(0);
+    }
+    
     // Draw sun and animate through mouse inputs
     // Arrow key movements 
     if(mouseX >= intSunXdefault && mouseX <= (intSunXdefault + 80) && mouseY >= intSunYdefault && mouseY <= (intSunYdefault + 80) && isSunPressed == false){
@@ -72,6 +81,18 @@ public class Sketch extends PApplet {
       sun(mouseX, mouseY, 80);
     }
 
+    // Draw Grass
+    grass(0, 300, 400, 100);
+    // Key inputs for grass colour change
+    if (keyPressed){
+      if (key == ' ')
+      {
+      fill(0); 
+      rect(0, 300, 400, 100);
+      }
+      else{}
+    }
+
     // Draw house 1
     house(200, 100, 200);
 
@@ -96,7 +117,8 @@ public class Sketch extends PApplet {
     {
       isHousePressed = false;
     }
-  }
+}
+
 
   /**
   * Draws a base grass for a drawing that utilizes grass for the base
@@ -151,7 +173,12 @@ public class Sketch extends PApplet {
     triangle(intHouseX, intHouseY, intHouseX + (intHouseSize / 2), intHouseY - (intHouseSize / 4), intHouseX + (intHouseSize), intHouseY);
 
     // Window
+    if (mouseY > 300 && isSunPressed == true) {
+      fill(255, 255, 0);
+    }
+    else{
     fill(0);
+    }
     rect((intHouseX + (intHouseSize / 2)), (intHouseY + (intHouseSize / 2)), (intHouseSize / 2), (intHouseSize / 4));
 
     // Door 
