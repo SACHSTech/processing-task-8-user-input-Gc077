@@ -29,8 +29,9 @@ public class Sketch extends PApplet {
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
-	   // Environment Designs 
+	  // Environment Designs 
     // Background 
+    
     if (isSunPressed == false) {
       background(135, 206, 235);
     }
@@ -45,6 +46,15 @@ public class Sketch extends PApplet {
     }
     
     // Draw sun and animate through mouse inputs
+    // Change sun size based on "+" key input
+    if(keyPressed){
+      if(key == '+'){
+        sun(intSunXdefault, intSunYdefault, 150);
+      }
+      else{}
+    }
+    else{}
+    
     // Arrow key movements 
     if(mouseX >= intSunXdefault && mouseX <= (intSunXdefault + 80) && mouseY >= intSunYdefault && mouseY <= (intSunYdefault + 80) && isSunPressed == false){
       if(mousePressed == true){
