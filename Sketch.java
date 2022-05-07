@@ -10,6 +10,7 @@ public class Sketch extends PApplet {
   boolean isSunPressed = false;
   boolean isHousePressed = false;
   char myLetter;
+  char outputLetter = ' ';
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -103,6 +104,12 @@ public class Sketch extends PApplet {
       }
       else{}
     }
+    if (intSunXdefault <= 0 || intSunYdefault <= 0 || intSunXdefault >= 0+width || intSunYdefault >= 0+height)
+    {
+      intSunXdefault = 50;
+      intSunYdefault = 60;
+    }
+
 
     // Draw house 1
     house(200, 100, 200);
@@ -203,6 +210,9 @@ public class Sketch extends PApplet {
   }
   public void mouseWheel(){
     background(255);
-    
   }
+  public void keyTyped() {
+    outputLetter += key;
+  }
+
 }
